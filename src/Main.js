@@ -1,66 +1,18 @@
-import restaurantfood from "../src/assets/restaurantfood.jpg";
-import greeksalad from "../src/assets/greeksalad.jpg";
-import deliveryicon from "../src/assets/Dishicon.svg";
-import bruschetta from "../src/assets/bruchetta.svg";
-import lemondessert from "../src/assets/lemondessert.jpg";
+import {Routes, Route} from 'react-router-dom';
+import Homepage from "./Homepage";
+import Specials from "./Specials";
+import Chicago from "./Chicago";
+import BookingPage from "./BookingPage";
 function Main(){
     return(
         <main className="main">
-            <div className="hero-section">
-                <div className="hero-section-text">
-                    <p class="title yellow">Little Lemon</p>
-                    <p class="subtitle white">Chicago</p>
-                    <p class="lead white">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
-                    <button class="btn card-title black">Reserve a table</button>
-                </div>
-                <div className="hero-section-image">
-                    <img src={restaurantfood} alt="restaurant food" />
-                </div>
-            </div>
-            <div className="highlights-section">
-                <div className="first-row">
-                    <section className="banner">
-                        <p class="title black">This week's specials!</p>
-                    </section>
-                    <section className="button">
-                        <button class="btn card-title black">Online Menu</button>
-                    </section>
-                </div>
-                <div className="second-row">
-                    <section>
-                        <article>
-                            <img src={greeksalad} alt="Greek Salad" className="dish-image"/>
-                            <div className="content">
-                                <p class="card-title black dish-name">Greek Salad</p>
-                                <p class="card-title pink dish-price">$ 12.99</p>
-                                <p class="paragraph black dish-description">The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.</p>
-                                <p class="highlight green order-delivery">Order a delivery</p>
-                                <img src={deliveryicon} alt="order a delivery" id="deliveryicon"/>
-                            </div>
-                        </article>
-                        <article>
-                            <img src={bruschetta} alt="Bruschetta" className="dish-image"/>
-                            <div className="content">
-                                <p class="card-title black dish-name">Bruschetta</p>
-                                <p class="card-title pink dish-price">$ 5.99</p>
-                                <p class="paragraph black dish-description">Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.</p>
-                                <p class="highlight green order-delivery">Order a delivery</p>
-                                <img src={deliveryicon} alt="order a delivery" id="deliveryicon"/>
-                            </div>
-                        </article>
-                        <article>
-                            <img src={lemondessert} alt="Lemon Dessert" className="dish-image"/>
-                            <div className="content">
-                                <p class="card-title black dish-name">Lemon Dessert</p>
-                                <p class="card-title pink dish-price">$ 5.00</p>
-                                <p class="paragraph black dish-description">This comes straight from grandma’s recipe book, every last ingredient has been sourced and is as authentic as can be imagined.</p>
-                                <p class="highlight green order-delivery">Order a delivery</p>
-                                <img src={deliveryicon} alt="order a delivery" id="deliveryicon"/>
-                            </div>
-                        </article>
-                    </section>
-                </div>
-            </div>
+            <Routes>
+                <Route path="/" element={<Homepage />}></Route>
+                <Route path="/about" element={<Chicago />}></Route>
+                <Route path="/menu" element={<Specials />}></Route>
+                <Route path="/reservations" element={<BookingPage />}></Route>
+                <Route path="/order-online" element={<Specials />}></Route>
+            </Routes>
         </main>
     )
 };

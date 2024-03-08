@@ -1,16 +1,18 @@
 import icon1 from "../src/assets/icon_hamburger.svg";
 import icon2 from "../src/assets/basket.svg";
+import {Link} from 'react-router-dom';
+
 function Nav(){
     return (
         <nav className="nav">
             <div className="navigation-links">
                 <ul>
-                    <li><a href="/home" class="card-title green">Home</a></li>
-                    <li><a href="/about" class="card-title green">About</a></li>
-                    <li><a href="/Menu" class="card-title green">Menu</a></li>
-                    <li><a href="/reservations" class="card-title green">Reservations</a></li>
-                    <li><a href="/order-online" class="card-title green">Order online</a></li>
-                    <li><a href="/login" class="card-title green">Login</a></li>
+                    <li><Link to="/" class="card-title green">Home</Link></li>
+                    <li><Link to="/about" class="card-title green">About</Link></li>
+                    <li><Link to="/menu" class="card-title green">Menu</Link></li>
+                    <li><Link to="/reservations" class="card-title green">Reservations</Link></li>
+                    <li><Link to="/order-online" class="card-title green">Order online</Link></li>
+                    <li><Link to="/login" class="card-title green">Login</Link></li>
                 </ul>
             </div>
             <div class="menu-icon" onClick="toggleMenu()">
