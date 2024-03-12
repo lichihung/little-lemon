@@ -1,47 +1,40 @@
 import {Routes, Route} from 'react-router-dom';
-import {useReducer} from 'react';
+import {useState, useEffect} from 'react';
 import Homepage from "./components/Homepage";
 import Specials from "./components/Specials";
 import Chicago from "./components/Chicago";
 import BookingPage from "./components/BookingPage";
-import {fetchAPI} from "https://drive.google.com/file/d/1PMLIeT_CGv6oGL7WoXa-ubgcSspRfyBL/view?usp=sharing";
-
-// const initializeTimes = () => ([
-//     "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"
-// ]);
-const initializeTimes = async () => {
-    const today = new Date().toISOString().split('T')[0];
-
-    try{
-        const times = await fetchAPI(today);
-        return times;
-    } catch (error){
-        console.error('Error fetching initial times', error.message)
-        return [
-            "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"
-        ];
-    }
-};
-
-const reducer = async (state, action) => {
-    switch (action.type) {
-        case "updateTimes":
-            const selectedDate = action.payload;
-            try {
-                const times = await fetchAPI(selectedDate);
-                return times;
-            } catch (error){
-                console.error('Error updating times:', error.message);
-                return state;
-            }
-        default:
-            // It's a good practice to return the current state by default
-            return state;
-    }
-};
+import {fetchAPI} from "./mockAPI.js";
 
 function Main(){
-    const [availableTimes,dispatch] = useReducer(reducer, initializeTimes());
+    // const [availableTimes,dispatch] = useReducer(reducer, initializeTimes());
+    const [availableTimes, setAvailableTimes] = useState([]);
+
+    useEffect(() => {
+        // Define an async function inside useEffect to fetch initial times
+        const initializeTimes = async () => {
+            const today = new Date().toISOString().split('T')[0];
+            try {
+                const times = await fetchAPI(today);
+                setAvailableTimes(times);
+            } catch (error) {
+                console.error('Error fetching initial times', error.message);
+                setAvailableTimes([
+                    "17:00", "18:00", "19:00", "20:00", "21:00", "22:00" // Default times in case of error
+                ]);
+            }
+        };
+        initializeTimes(); // Call the function
+    }, []); // Empty dependency array means this runs once on component mount
+
+    const updateTimes = async (selectedDate) => {
+        try {
+            const times = await fetchAPI(selectedDate);
+            setAvailableTimes(times);
+        } catch (error) {
+            console.error('Error updating times:', error.message);
+        }
+    };
 
     return(
         <main className="main">
@@ -49,7 +42,7 @@ function Main(){
                 <Route path="/" element={<Homepage />}></Route>
                 <Route path="/about" element={<Chicago />}></Route>
                 <Route path="/menu" element={<Specials />}></Route>
-                <Route path="/reservations" element={<BookingPage availableTimes={availableTimes} dispatch={dispatch}/>}></Route>
+                <Route path="/reservations" element={<BookingPage availableTimes={availableTimes} updateTimes={updateTimes}/>}></Route>
                 <Route path="/order-online" element={<Specials />}></Route>
             </Routes>
         </main>
@@ -57,4 +50,4 @@ function Main(){
 };
 
 export default Main;
-export {initializeTimes, reducer};
+// export {initializeTimes, reducer};

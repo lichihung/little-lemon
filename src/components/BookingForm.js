@@ -8,7 +8,7 @@ function BookingForm(props){
     const handleDateChange = (e) => {
         const newDate = e.target.value;
         setDate(newDate);
-        props.dispatch({type: "updateTimes", payload: newDate});
+        props.updateTimes(newDate);
     };
     const handleSubmit = (e) => {
         e.preventDefault();
