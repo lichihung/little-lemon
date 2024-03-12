@@ -1,5 +1,5 @@
-import icon1 from "../src/assets/icon_hamburger.svg";
-import icon2 from "../src/assets/basket.svg";
+import icon1 from "./assets/icon_hamburger.svg";
+import icon2 from "./assets/basket.svg";
 import {Link} from 'react-router-dom';
 
 function Nav(){

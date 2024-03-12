@@ -1,7 +1,7 @@
-import pasta from "../src/assets/pasta.jpg";
-import fish from "../src/assets/fish.jpg";
-import greeksalad from "../src/assets/greeksalad.jpg";
-import lemondessert from "../src/assets/lemondessert.jpg";
+import pasta from "../assets/pasta.jpg";
+import fish from "../assets/fish.jpg";
+import greeksalad from "../assets/greeksalad.jpg";
+import lemondessert from "../assets/lemondessert.jpg";
 function CustomersSay(){
     return(
         <div className="testimonials-section">
@@ -65,6 +65,31 @@ function CustomersSay(){
                     <p className="paragraph black review">"The Greek salad was a refreshing medley that transported me straight to the Mediterranean."</p>
                     <p className="card-title black profile">- Ruth C.</p>
                 </article>
+            </section>
+            {/* mobile viersion */}
+            <section className="testimonials-box-mobile">
+                    <div className="testimonials-left-mobile">
+                        <i class="fa-solid fa-circle-chevron-left fa-2xl green"></i>
+                    </div>
+                    <article>
+                        <div className="testimonials-content">
+                            <div className="rating">
+                                <i className="fa-solid fa-star yellow"></i>
+                                <i className="fa-solid fa-star yellow"></i>
+                                <i className="fa-solid fa-star yellow"></i>
+                                <i className="fa-solid fa-star yellow"></i>
+                                <i className="fa-regular fa-star yellow"></i>
+                            </div>
+                            <div className="img-container">
+                                <img src={pasta} alt="Pasta" class="review-img"/>
+                            </div>
+                            <p className="paragraph black review">“The pasta was a delectable blend of rich flavors. The best pasta I've had in years!”</p>
+                            <p className="card-title black profile">- Peter J.</p>
+                        </div>
+                    </article>
+                    <div className="testimonials-right-mobile">
+                        <i class="fa-solid fa-circle-chevron-right fa-2xl green"></i>
+                    </div>
             </section>
         </div>
     )

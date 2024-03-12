@@ -1,0 +1,108 @@
+/* Section style */
+.testimonials-section{
+    background-color:#EBDABB;
+    margin-left:-70px;
+    margin-right:-70px;
+    padding-top:50px;
+    height:550px;
+  }
+  .testimonials-title{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+  }
+  .testimonials-box{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items:center;
+    margin-left:-70px;
+    margin-right:-70px;
+    margin-top: 20px;
+  }
+  .testimonials-box article{
+    flex:1;
+    max-width: 250px;
+    height: 340px;
+    background-color:white;
+    margin:10px;
+  }
+  .testimonials-content{
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+  }
+  .testimonials-content .rating{
+    margin: 40px auto 20px auto;
+    height:auto;
+  }
+  .testimonials-content .review-img{
+    flex: 1;
+  }
+  .testimonials-content .review{
+    flex: 1;
+  }
+  .testimonials-content .profile{
+    flex: 1;
+  }
+  .testimonials-content p{
+    max-width: 180px;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+  .testimonials-box-mobile{
+    display:none;
+  }
+
+/* Image style */
+.testimonials-section .img-container{
+    width:120px;
+    height: 80px;
+    overflow: hidden;
+  }
+  .testimonials-section .img-container img{
+    width:100%;
+    height:auto;
+  }
+
+/* Responsive */
+@media (max-width: 430px) {
+    .testimonials-section{
+      background-color:#EBDABB;
+      margin-left:-20px;
+      margin-right:-20px;
+      padding-top:30px;
+      height:480px;
+    }
+    .testimonials-title {
+      font-size: 48px;
+    }
+    .testimonials-box{
+      display:none;
+    }
+    .testimonials-box-mobile{
+      display:grid;
+      grid-template-columns:40px 240px 40px;
+      grid-template-rows: 340px;
+      grid-template-areas: "left-icon review right-icon";
+      align-items: center;
+      justify-content: center;
+      grid-column-gap: 15px;
+    }
+    .testimonials-left-mobile{
+      grid-area: left-icon;
+    }
+    .testimonials-right-mobile{
+      grid-area: right-icon;
+      margin-left:10px;
+    }
+    .testimonials-content{
+      grid-area: review;
+      max-width: 240px;
+      height: 340px;
+      background-color:white;
+      margin-top:30px;
+      }
+  }

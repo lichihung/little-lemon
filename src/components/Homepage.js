@@ -1,7 +1,7 @@
-import restaurantfood from "../src/assets/restaurantfood.jpg";
-import Specials from "./Specials";
-import CustomersSay from "./CustomersSay";
-import Chicago from "./Chicago";
+import restaurantfood from "../assets/restaurantfood.jpg";
+import Specials from "../components/Specials";
+import CustomersSay from "../components/CustomersSay";
+import Chicago from "../components/Chicago";
 
 function Homepage(){
     return(

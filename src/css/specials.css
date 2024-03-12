@@ -1,0 +1,168 @@
+/* Section style */
+.highlights-section{
+    height:670px;
+    margin-top:100px;
+  }
+  .first-row{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .first-row > .banner{
+    flex:2;
+    height:80px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+  }
+  .first-row > .button{
+    flex:1;
+    height:80px;
+    display:flex;
+    justify-content: left;
+    align-items:center;
+  }
+  .second-row section{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items:center;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top:40px;
+  }
+  .second-row section article{
+    flex:1;
+    width:260px;
+    position:relative;
+    height: 500px;
+    display:flex;
+    flex-wrap:wrap;
+  }
+  .second-row .content{
+    background-color:#EDEFEE;
+    max-width: 220px;
+    padding:10px;
+    display:grid;
+    grid-template-areas: "name price" "description description" "delivery deliveryicon";
+    grid-template-rows: 60px 150px 60px;
+    grid-template-columns: 130px 1fr;
+    padding-left:20px;
+    padding-right:20px;
+    position:absolute;
+    top:0;
+    left:0;
+    margin-top:165px;
+    z-index: 2;
+  }
+  .dish-name{
+    grid-area: name;
+  }
+  .dish-price{
+    grid-area: price;
+    text-align:right;
+  }
+  .dish-description{
+    grid-area: description;
+    max-width: 400px;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+  .order-delivery{
+    grid-area: delivery;
+  }
+  .deliveryicon{
+    grid-area: deliveryicon;
+    margin-top:15px;
+  }
+  .third-row{
+    display:none;
+  }
+
+/* Image style */
+.dish-image{
+    width: 260px;
+    height: 175px;
+    border-radius: 15px;
+    position:relative;
+    z-index: 1;
+}
+.deliveryicon{
+    width:20px;
+}
+
+/* Responsive */
+@media (max-width: 430px) {
+    .highlights-section{
+      height:700px;
+      margin-top:20px;
+    }
+    .first-row > .banner{
+      height:60px;
+    }
+    .first-row > .banner p {
+      font-size: 48px;
+      width:370px;
+      text-align:center;
+    }
+    .first-row > .button{
+      height:60px;
+      justify-content: center;
+    }
+    .second-row{
+      display:none;
+    }
+    .third-row{
+      display:block;
+    }
+    .third-row section article{
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      grid-template-rows: 25px 70px 25px 25px;
+      grid-template-areas: "dish-name dish-image"
+                           "dish-description dish-image"
+                           "dish-description dish-price"
+                           "dish-description delivery-group";
+      align-items: center;
+      grid-column-gap: 15px;
+      border-bottom: 1px solid #bbbcbc;
+      padding-top: 20px;
+      padding-bottom: 10px;
+    }
+    .third-row .dish-name{
+      grid-area: dish-name;
+      margin:0;
+    }
+    .third-row .dish-description{
+      grid-area: dish-description;
+      margin:0;
+    }
+    .third-row .dish-price{
+      grid-area: dish-price;
+      margin:0;
+      text-align:right;
+    }
+    .third-row .delivery-group{
+      grid-area: delivery-group;
+      margin:0;
+      display:flex;
+      align-items:center;
+      justify-content: right;
+      column-gap:8px;
+    }
+    .third-row .deliveryicon{
+      margin:0;
+    }
+    .third-row .dish-image-container{
+      grid-area: dish-image;
+      width: 125px;
+      height: 85px;
+      overflow:hidden;
+      border-radius: 5px;
+    }
+    .third-row .dish-image-container img{
+      width:100%;
+      height:auto;
+    }
+}
