@@ -12,7 +12,8 @@ function BookingForm(props){
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.onSubmit(); // This line is to simulate form submission for testing
+        const formData = {date, time, guests, occasion};
+        props.onSubmit(formData); // Pass formData to submitForm function
     }
 
     return(
@@ -30,10 +31,11 @@ function BookingForm(props){
 
                     <label htmlFor="res-time">Choose time</label>
                     <select
-                    id="res-time "
+                    id="res-time"
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
                     >
+                    {/* If running the test, this should be skipped. */}
                     {props.availableTimes.map((timeoption, index) => (
                         <option key={index} value={timeoption}>{timeoption}</option>
                     ))}

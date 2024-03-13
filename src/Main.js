@@ -1,14 +1,16 @@
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, useNavigate} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import Homepage from "./components/Homepage";
 import Specials from "./components/Specials";
 import Chicago from "./components/Chicago";
 import BookingPage from "./components/BookingPage";
-import {fetchAPI} from "./mockAPI.js";
+import ConfirmedBooking from './components/ConfirmedBooking';
+import {fetchAPI, submitAPI} from "./mockAPI.js";
 
 function Main(){
     // const [availableTimes,dispatch] = useReducer(reducer, initializeTimes());
     const [availableTimes, setAvailableTimes] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Define an async function inside useEffect to fetch initial times
@@ -36,16 +38,32 @@ function Main(){
         }
     };
 
+    const submitForm = async (formData) => {
+        try {
+            const result = await submitAPI(formData);
+            if (result === true){
+                navigate('/confirm-booking');
+            } else {
+                alert("There was an issue with your booking. Please try again.")
+            }
+        } catch (error) {
+            console.error('Error submitting booking:', error.message);
+        }
+    }
+
     return(
+        <div>
         <main className="main">
             <Routes>
                 <Route path="/" element={<Homepage />}></Route>
                 <Route path="/about" element={<Chicago />}></Route>
                 <Route path="/menu" element={<Specials />}></Route>
-                <Route path="/reservations" element={<BookingPage availableTimes={availableTimes} updateTimes={updateTimes}/>}></Route>
+                <Route path="/reservations" element={<BookingPage availableTimes={availableTimes} updateTimes={updateTimes} submitForm={submitForm}/>}></Route>
                 <Route path="/order-online" element={<Specials />}></Route>
+                <Route path="/confirm-booking" element={<ConfirmedBooking />}></Route>
             </Routes>
         </main>
+        </div>
     )
 };
 
