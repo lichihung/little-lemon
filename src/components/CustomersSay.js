@@ -5,7 +5,7 @@ import lemondessert from "../assets/lemondessert.jpg";
 function CustomersSay(){
     return(
         <div className="testimonials-section">
-            <section className="testimonials-title title black">Testimonials</section>
+            <header className="testimonials-title title black">Testimonials</header>
             <section className="testimonials-box">
                 <article >
                     <div className="testimonials-content">

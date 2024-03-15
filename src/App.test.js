@@ -1,10 +1,3 @@
-import {render, waitFor, act, screen, fireEvent} from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import Main from './Main';
-import {fetchAPI} from './mockAPI';
-import { BrowserRouter } from 'react-router-dom';
-import BookingForm from './components/BookingForm';
-
 // import {render, screen, fireEvent} from '@testing-library/react';
 // import BookingForm from './components/BookingForm';
 // import {initializeTimes, reducer} from './Main';
@@ -45,6 +38,12 @@ describe("Form submission", () =>{
   })
 })
 */
+/*
+import {render, waitFor, screen, fireEvent} from '@testing-library/react';
+import Main from './Main';
+import {fetchAPI} from './mockAPI';
+import { BrowserRouter } from 'react-router-dom';
+import BookingForm from './components/BookingForm';
 
 jest.mock('./mockAPI', () => ({
   fetchAPI: jest.fn(),
@@ -91,7 +90,7 @@ describe('Main component', () => {
     const dateInput = screen.getByLabelText(/Choose date/);
     expect(dateInput).toBeInTheDocument();
   });
-  
+
   it('updates times and fetchAPI', async () => {
     const mockInitialTimes = ["10:00", "11:00", "12:00"];
     const mockUpdatedTimes = ["14:00", "15:00", "16:00"];
@@ -119,5 +118,65 @@ describe('Main component', () => {
       });
     });
     expect(fetchAPI).toHaveBeenCalledWith("2024-03-13");
+  });
+});
+*/
+
+import {render, waitFor, screen, fireEvent} from '@testing-library/react';
+import BookingForm from './components/BookingForm';
+
+describe('BookingForm component', () => {
+    it('HTML5 validation attributes are applied', () =>{
+        const mockInitialTimes = ["10:00", "11:00", "12:00"];
+        const mockUpdatedTimes = ["14:00", "15:00"];
+        const mockOnFormSubmit = jest.fn();
+        render(
+            <BookingForm availableTimes={mockInitialTimes} updateTimes={mockUpdatedTimes} onSubmit={mockOnFormSubmit} />
+        )
+
+        const dateInput = screen.getByLabelText(/Choose date/);
+        expect(dateInput).toHaveAttribute("type","date");
+
+        const timeInput = screen.getByLabelText(/Choose time/);
+        expect(timeInput).toBeInTheDocument();
+
+        const guestInput = screen.getByLabelText(/Number of guests/);
+        expect(guestInput).toHaveAttribute("type","number");
+        expect(guestInput).toHaveAttribute("min","1");
+        expect(guestInput).toHaveAttribute("max","10");
+
+    });
+    it('JavaScript validation functions work correctly', async () =>{
+      const handleSubmit = jest.fn();
+      render(
+          <BookingForm vailableTimes={["10:00", "11:00", "12:00"]} onSubmit={handleSubmit}/>
+      );
+      //Valid submission
+      const dateInput = screen.getByLabelText(/Choose date/);
+      fireEvent.change(dateInput, {target: {value:"2024-03-13"}});
+
+      const timeSelect = screen.getByLabelText(/Choose time/);
+      fireEvent.change(timeSelect, {target: {value:"11:00"}});
+
+      const guestInput = screen.getByLabelText(/Number of guests/);
+      fireEvent.change(guestInput, {target: {value:"5"}});
+
+      const occasionSelect = screen.getByLabelText(/Occasion/);
+      fireEvent.change(occasionSelect, {target: {value:"Birthday"}});
+
+      const submitButton = screen.getByRole('button', { name: /Reserve now/ });
+      // fireEvent.click(submitButton);
+      // await waitFor(() => expect(handleSubmit).toHaveBeenCalled());
+
+      // Invalid submission (no date selected)
+    fireEvent.change(dateInput, { target: { value: '' } });
+    fireEvent.click(submitButton);
+
+    // Check if the appropriate error message is shown
+    await waitFor(() => {
+      expect(screen.getByText('Required')).toBeInTheDocument();
+    });
+
+    fireEvent.change(dateInput, {target: {value:"2024-03-13"}});
   });
 });

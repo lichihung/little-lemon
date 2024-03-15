@@ -1,10 +1,17 @@
 import {Link} from 'react-router-dom';
+import FullScreenSection from "./FullScreenSection";
 
 function ConfirmedBooking(){
     return(
         <>
-            <h1>Booking confirmed!</h1>
-            <button><Link to="/reservations" class="card-title green">Back to reservasions</Link></button>
+        <FullScreenSection
+            isDarkBackground
+            backgroundColor="#495557"
+            py={16}>
+            <header className="title">Table reserved!</header>
+            <button className="btn" aria-label="Back to reservations"><Link to="/reservations" class="card-title black">Back to reservations</Link></button>
+            </FullScreenSection>
+
         </>
     )
 };

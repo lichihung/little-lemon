@@ -6,11 +6,11 @@ function Specials(){
     return(
         <div className="highlights-section">
                 <div className="first-row">
-                    <section className="banner">
+                    <header className="banner">
                         <p class="title black">This week's specials!</p>
-                    </section>
+                    </header>
                     <section className="button">
-                        <button class="btn card-title black">Online Menu</button>
+                        <button class="btn card-title black" aria-label="Online Menu">Online Menu</button>
                     </section>
                 </div>
                 <div className="second-row">

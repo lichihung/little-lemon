@@ -37,7 +37,7 @@ const availableTimesByDate = {
   }
 
   const submitAPI = (formData) => {
-    availableTimesByDate[formData.date] = availableTimesByDate[formData.date].filter(time => time !== formData.time);
+    availableTimesByDate[formData.resdate] = availableTimesByDate[formData.resdate].filter(time => time !== formData.restime);
 
     return new Promise((resolve, reject) => {
       setTimeout(() => {

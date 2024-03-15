@@ -52,7 +52,7 @@ function Main(){
     }
 
     return(
-        <div>
+
         <main className="main">
             <Routes>
                 <Route path="/" element={<Homepage />}></Route>
@@ -63,7 +63,7 @@ function Main(){
                 <Route path="/confirm-booking" element={<ConfirmedBooking />}></Route>
             </Routes>
         </main>
-        </div>
+
     )
 };
 
