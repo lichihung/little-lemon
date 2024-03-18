@@ -6,20 +6,20 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Heading,
   Input,
+  InputGroup,
+  InputLeftAddon,
   VStack,
 } from "@chakra-ui/react";
 import * as Yup from 'yup';
 import FullScreenSection from "./FullScreenSection";
 
 function BookingForm(props){
+    const [isDateTouched, setIsDateTouched] = useState(false);
     // const [date, setDate] = useState("");
     // const [time, setTime] = useState("");
-    const [guests, setGuests] = useState(1);
-    const [occasion, setOccasion] = useState("");
-    const [isDateTouched, setIsDateTouched] = useState(false);
-
+    // const [guests, setGuests] = useState(1);
+    // const [occasion, setOccasion] = useState("");
     // const handleDateChange = (e) => {
     //     const newDate = e.target.value;
     //     setDate(newDate);
@@ -52,18 +52,24 @@ function BookingForm(props){
         initialValues: {
           resdate: "",
           restime: "14:00",
-          guests: "1",
+          guests: 1,
           occasion: "Birthday",
+          username: "",
+          usercontact: "",
+          userPhoneNumber:"",
+          userEmail:""
         },
         onSubmit: (formData) => {
           console.log(formData);
           props.onSubmit(formData);
         },
-        validationSchema: Yup.object({}).shape({
+        validationSchema: Yup.object().shape({
           resdate: Yup.string().required("Required"),
           restime: Yup.string().required("Required"),
           guests: Yup.number().integer().required("Required"),
           occasion: Yup.string().oneOf(['Birthday','Anniversary','Engagement','Other']),
+          username: Yup.string().required("Required").max(25,"Must be fewer than 25 characters"),
+          usercontact: Yup.string().required("Please select one. This is for contact purpose only."),
         }),
       });
 
@@ -80,9 +86,9 @@ function BookingForm(props){
             backgroundColor="#495557"
             py={16}>
                 <VStack w="1024px" p={48} alignItems="center">
-                <Heading className="yellow title" id="booking-section">
+                <header className="yellow title" id="booking-section">
                     Reserve a table
-                </Heading>
+                </header>
                 <Box p={16} w="100%">
                     <form className="bookingform" onSubmit={formik.handleSubmit}>
                         <FormControl  className="formfield" isInvalid={!formik.values.resdate && (isDateTouched || formik.touched.resdate)} >
@@ -125,8 +131,8 @@ function BookingForm(props){
                             min="1"
                             max="10"
                             id="guests"
-                            value={guests}
-                            onChange={(e) => setGuests(e.target.value)}
+                            // value={guests}
+                            // onChange={(e) => setGuests(e.target.value)}
                             className="highlight black"
                             {...formik.getFieldProps('guests')}
                             />
@@ -137,8 +143,8 @@ function BookingForm(props){
                             <FormLabel htmlFor="occasion" className="card-title">Occasion</FormLabel>
                             <select
                             id="occasion"
-                            value={occasion}
-                            onChange={(e) => setOccasion(e.target.value)}
+                            // value={occasion}
+                            // onChange={(e) => setOccasion(e.target.value)}
                             className="highlight black"
                             {...formik.getFieldProps('occasion')}
                             >
@@ -149,7 +155,67 @@ function BookingForm(props){
                             </select>
                             <FormErrorMessage className="pink highlight">{formik.errors.occasion}</FormErrorMessage>
                         </FormControl>
-                            <Button type="submit" className={"btn card-title black"} aria-label="Submit booking">
+
+                        <FormControl isInvalid={!!formik.errors.username && formik.touched.username} className="formfield">
+                            <FormLabel htmlFor="username" className="card-title">Your name</FormLabel>
+                            <Input
+                            id="username"
+                            placeholder="Please type your name"
+                            className="highlight black"
+                            {...formik.getFieldProps('username')}
+                            />
+                            <FormErrorMessage className="pink highlight">{formik.errors.username}</FormErrorMessage>
+                        </FormControl>
+
+                        <FormControl isInvalid={!!formik.errors.usercontact && formik.touched.usercontact} className="formfield">
+                            <FormLabel htmlFor="usercontact" className="card-title">Contact info (select one)</FormLabel>
+                                <fieldset id="usercontact" className="highlight" {...formik.getFieldProps('usercontact')}>
+                                    <div>
+                                        <Input
+                                        type="radio"
+                                        id="radioOption1"
+                                        name="usercontact"
+                                        onChange={(e) => {formik.setFieldValue('usercontact', e.target.value, true)}}
+                                        value="Phone number"/>Phone number
+                                    </div>
+                                        {formik.values.usercontact === "Phone number" ?
+                                        <div>
+                                            <InputGroup>
+                                                <InputLeftAddon>+1</InputLeftAddon>
+                                                <Input
+                                                    type="tel"
+                                                    id="userPhoneNumber"
+                                                    placeholder="xxx-xxxxxxx"
+                                                    className="highlight black"
+                                                    {...formik.getFieldProps('userPhoneNumber')}
+                                                    />
+                                            </InputGroup>
+                                            <FormLabel htmlFor="userPhoneNumber" className="highlight pink contact-error-message">Required. This is for contact purpose only.</FormLabel>
+                                        </div>
+                                        : null}
+                                    <div>
+                                        <Input
+                                        type="radio"
+                                        id="radioOption2"
+                                        name="usercontact"
+                                        onChange={(e) => {formik.setFieldValue('usercontact', e.target.value, true)}}
+                                        value="Email"/>Email
+                                    </div>
+                                        {formik.values.usercontact === "Email" ?
+                                        <div>
+                                            <Input
+                                            id="userEmail"
+                                            placeholder="liz@example.com"
+                                            className="highlight black"
+                                            {...formik.getFieldProps('userEmail')}
+                                            />
+                                            <FormLabel htmlFor="userEmail" className="highlight pink contact-error-message">Required. This is for contact purpose only.</FormLabel>
+                                        </div>
+                                        : null}
+                                </fieldset>
+                            <FormErrorMessage className="pink highlight">{formik.errors.usercontact}</FormErrorMessage>
+                        </FormControl>
+                            <Button type="submit" className={"btn card-title black booking-btn"} aria-label="Submit booking">
                                 Reserve now
                             </Button>
                     </form>

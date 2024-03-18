@@ -11,10 +11,10 @@ function Chicago(){
             </div>
             <div className="about-img">
                 <div className="about-img-container">
-                    <img src={owners_A} alt="Mario and Adrian" class="about-img"/>
+                    <img src={owners_A} alt="Mario and Adrian" aria-label="owners firs image" className="about-img"/>
                 </div>
                 <div className="about-img-container">
-                    <img src={owners_B} alt="Mario and Adrian" class="about-img"/>
+                    <img src={owners_B} alt="Mario and Adrian" aria-label="owners second image" className="about-img"/>
                 </div>
             </div>
         </div>

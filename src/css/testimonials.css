@@ -52,7 +52,7 @@
     white-space: normal;
     overflow-wrap: break-word;
   }
-  .testimonials-box-mobile{
+  .testimonials-animation{
     display:none;
   }
 
@@ -73,36 +73,150 @@
       background-color:#EBDABB;
       margin-left:-20px;
       margin-right:-20px;
-      padding-top:30px;
-      height:480px;
+      padding-top:55px;
+      min-height: 62vh;
     }
-    .testimonials-title {
+    .testimonials-title{
       font-size: 48px;
     }
+
     .testimonials-box{
       display:none;
     }
     .testimonials-box-mobile{
-      display:grid;
-      grid-template-columns:40px 240px 40px;
-      grid-template-rows: 340px;
-      grid-template-areas: "left-icon review right-icon";
-      align-items: center;
-      justify-content: center;
-      grid-column-gap: 15px;
-    }
-    .testimonials-left-mobile{
-      grid-area: left-icon;
-    }
-    .testimonials-right-mobile{
-      grid-area: right-icon;
-      margin-left:10px;
+      display:block;
+      width:240px;
     }
     .testimonials-content{
-      grid-area: review;
-      max-width: 240px;
       height: 340px;
       background-color:white;
-      margin-top:30px;
-      }
+    }
+    .testimonials-content .rating{
+      margin: 40px auto 0px auto;
+      width:120px;
+      display:flex;
+      flex-direction:row;
+      justify-content:center;
+      font-size:20px;
+    }
+    .testimonials-section .img-container{
+      height: 100px;
+      margin-top:10px;
+    }
+    .testimonials-animation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 50vh;
+    }
+    ul.slides {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    li.slide {
+      margin: 0;
+      padding: 0;
+      width: inherit;
+      height: inherit;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: .5s transform ease-in-out;
+    }
+    .slide:nth-of-type(1) {
+      background-color: #EBDABB;
+    }
+    .slide:nth-of-type(2) {
+      background-color: #EBDABB;
+      left: 100%;
+    }
+    .slide:nth-of-type(3) {
+      background-color: #EBDABB;
+      left: 200%;
+    }
+    .slide:nth-of-type(4) {
+      background-color: #EBDABB;
+      left: 300%;
+    }
+    .testimonials-animation input[type="radio"] {
+      position: relative;
+      z-index: 100;
+      display: none;
+    }
+    .controls-visible {
+      position: absolute;
+      width: 100%;
+      bottom: 0px;
+      text-align: center;
+    }
+    .controls-visible label {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background-color: #fff;
+      border-radius: 50%;
+      margin: 0 6px;
+      border: 2px solid #fff;
+    }
+    .slides input[type="radio"]:nth-of-type(1):checked ~ .controls-visible label:nth-of-type(1) {
+      background-color: #333;
+    }
+    .slides input[type="radio"]:nth-of-type(2):checked ~ .controls-visible label:nth-of-type(2) {
+      background-color: #333;
+    }
+    .slides input[type="radio"]:nth-of-type(3):checked ~ .controls-visible label:nth-of-type(3) {
+      background-color: #333;
+    }
+    .slides input[type="radio"]:nth-of-type(4):checked ~ .controls-visible label:nth-of-type(4) {
+      background-color: #333;
+    }
+    .slides input[type="radio"]:nth-of-type(1):checked ~ .slide {
+      transform: translatex(0%);
+    }
+    .slides input[type="radio"]:nth-of-type(2):checked ~ .slide {
+      transform: translatex(-100%);
+    }
+    .slides input[type="radio"]:nth-of-type(3):checked ~ .slide {
+      transform: translatex(-200%);
+    }
+    .slides input[type="radio"]:nth-of-type(4):checked ~ .slide {
+      transform: translatex(-300%);
+    }
+    /* Left/Right Button Classes Below */
+    .navigator {
+      position: absolute;
+      top: 50%;
+      transform: translatey(-50%);
+      width: 100%;
+      z-index: 100;
+      padding: 0 30px;
+      display: flex;
+      justify-content: space-between;
+      box-sizing: border-box;
+      display: none;
+    }
+    .navigator i {
+      font-size: 32px;
+      color: #333;
+    }
+    .slides input[type="radio"]:nth-of-type(1):checked ~ .navigator:nth-of-type(1) {
+      display: flex;
+    }
+    .slides input[type="radio"]:nth-of-type(2):checked ~ .navigator:nth-of-type(2) {
+      display: flex;
+    }
+    .slides input[type="radio"]:nth-of-type(3):checked ~ .navigator:nth-of-type(3) {
+      display: flex;
+    }
+    .slides input[type="radio"]:nth-of-type(4):checked ~ .navigator:nth-of-type(4) {
+      display: flex;
+    }
   }

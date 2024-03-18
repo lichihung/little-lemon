@@ -43,3 +43,51 @@
     padding-left:5px;
     border: 1px solid transparent;
 }
+
+#username{
+    width:285px;
+    height:35px;
+    border-radius:8px;
+    padding-left:10px;
+    border: 1px solid transparent;
+}
+
+#usercontact{
+    display:grid;
+    gap:20px;
+}
+
+#radioOption1, #radioOption2{
+    margin-right:10px;
+}
+
+#userPhoneNumber{
+    width:250px;
+    height:25px;
+    border-radius:8px;
+    padding-left:10px;
+    margin-left:10px;
+    border: 1px solid transparent;
+}
+
+#userEmail{
+    width:250px;
+    height:25px;
+    border-radius:8px;
+    padding-left:10px;
+    border: 1px solid transparent;
+    margin-left:20px;
+}
+
+.contact-error-message{
+    padding-top:10px;
+    margin-left:20px;
+}
+.booking-btn{
+    /* (width of .formfield - 200px )/2 */
+    margin-left:50px;
+}
+
+#usercontact{
+    border:transparent;
+}

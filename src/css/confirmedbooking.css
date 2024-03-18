@@ -1,0 +1,102 @@
+.confirm-section{
+    display:grid;
+    width: 440px;
+    grid-template-areas: "confirm-box"
+                         "confirm-note"
+                         "confirm-welcome"
+                         "btn1"
+                         "btn2";
+    align-items: center;
+    justify-content: center;
+    grid-row-gap: 35px;
+    padding-top:90px;
+}
+.confirm-box{
+    grid-area: confirm-box;
+    width:320px;
+    height:200px;
+    background-color:#F4CE14;
+    border-radius:10px;
+    display:grid;
+    grid-template-areas: "confirm-box-check"
+                         "confirm-box-header"
+                         "confirm-box-text";
+    grid-template-rows:2fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+    padding:5px;
+    /* (width of .confirm-section - width of .confirm-box )/2 */
+    margin-left:60px;
+}
+.confirm-box i{
+    grid-area:confirm-box-check;
+    margin-top:20px;
+}
+.confirm-box header{
+    grid-area:confirm-box-header;
+}
+.confirm-box p{
+    grid-area:confirm-box-text;
+}
+.confirm-note{
+    grid-area:confirm-note;
+    display:grid;
+    grid-template-areas: "confirm-note-header confirm-note-header"
+                         "confirm-note-point1-check confirm-note-point1-text"
+                         "confirm-note-point2-check confirm-note-point2-text";
+    grid-template-columns:30px 410px ;
+    grid-template-rows:20px 80px 40px;
+    align-items:baseline;
+    margin-top:20px;
+}
+.confirm-note header{
+    grid-area:confirm-note-header;
+}
+.confirm-note-check1{
+    grid-area:confirm-note-point1-check;
+}
+.confirm-note-text1{
+    grid-area:confirm-note-point1-text;
+}
+.confirm-note-check2{
+    grid-area:confirm-note-point2-check;
+}
+.confirm-note-text2{
+    grid-area:confirm-note-point2-text;
+}
+.confirm-welcome{
+    grid-area:confirm-welcome;
+    text-align:center;
+}
+.confirmed-btn1{
+    grid-area:btn1;
+    /* (width of .confirm-section - 200px )/2 */
+    margin-left:120px;
+}
+.confirmed-btn2{
+    grid-area:btn2;
+    /* (width of .confirm-section - 200px )/2 */
+    margin-left:120px;
+    margin-top:-10px;
+}
+
+/* Responsive */
+@media (max-width: 430px) {
+    .confirm-section{
+        width: 400px;
+    }
+    .confirm-box{
+        margin-left:40px;
+    }
+    .confirm-note{
+        grid-template-columns:30px 340px ;
+        margin-left:15px;
+    }
+    .confirmed-btn1{
+        margin-left:100px;
+    }
+    .confirmed-btn2{
+        margin-left:100px;
+    }
+  }

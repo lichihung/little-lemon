@@ -104,8 +104,11 @@ a{
   border-radius: 10px;
   width:200px;
   height:40px;
+  cursor:pointer;
 }
-
+.btn:hover{
+  background-color:#EBDABB;
+}
 /* Color */
 .green{
   color:#495557;
@@ -130,7 +133,7 @@ a{
 @media (max-width: 430px) {
   .App {
     grid-template-columns:1fr 1fr;
-    grid-template-rows: 90px 2700px 440px;
+    grid-template-rows: 90px 2800px 440px;
     grid-template-areas: "header nav" "main main" "footer footer";
     margin-left:20px;
     margin-right:20px;

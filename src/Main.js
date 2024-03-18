@@ -5,11 +5,13 @@ import Specials from "./components/Specials";
 import Chicago from "./components/Chicago";
 import BookingPage from "./components/BookingPage";
 import ConfirmedBooking from './components/ConfirmedBooking';
+import BookingDetail from './components/BookingDetail';
 import {fetchAPI, submitAPI} from "./mockAPI.js";
 
 function Main(){
     // const [availableTimes,dispatch] = useReducer(reducer, initializeTimes());
     const [availableTimes, setAvailableTimes] = useState([]);
+    const [userData, setUserData] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -35,6 +37,7 @@ function Main(){
             setAvailableTimes(times);
         } catch (error) {
             console.error('Error updating times:', error.message);
+            alert(error.message);
         }
     };
 
@@ -43,6 +46,7 @@ function Main(){
             const result = await submitAPI(formData);
             if (result === true){
                 navigate('/confirm-booking');
+                setUserData(formData);
             } else {
                 alert("There was an issue with your booking. Please try again.")
             }
@@ -61,6 +65,7 @@ function Main(){
                 <Route path="/reservations" element={<BookingPage availableTimes={availableTimes} updateTimes={updateTimes} submitForm={submitForm}/>}></Route>
                 <Route path="/order-online" element={<Specials />}></Route>
                 <Route path="/confirm-booking" element={<ConfirmedBooking />}></Route>
+                <Route path="/your-reservation" element={<BookingDetail userData={userData}/>}></Route>
             </Routes>
         </main>
 
