@@ -76,7 +76,7 @@ function CustomersSay(){
                 <input type="radio" id="control-4" name="control" />
 
                 <div className="navigator slide-1">
-                    <label htmlFor="control-3">
+                    <label htmlFor="control-4">
                     <i className="fas fa-chevron-left"></i>
                     </label>
                     <label htmlFor="control-2">
