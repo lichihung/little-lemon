@@ -9,7 +9,7 @@ function Footer(){
             <div>
                 <h4 className="card-title black">Doormat Navigation</h4>
                 <ul>
-                    <li><Link to="/home" className="paragraph black" aria-label="Home">Home</Link></li>
+                    <li><Link to="/" className="paragraph black" aria-label="Home">Home</Link></li>
                     <li><Link to="/about" className="paragraph black" aria-label="About">About</Link></li>
                     <li><Link to="/menu" className="paragraph black" aria-label="Menu">Menu</Link></li>
                     <li><Link to="/reservations" className="paragraph black" aria-label="Reservations">Reservations</Link></li>
