@@ -41,13 +41,6 @@ function BookingForm(props){
         setIsDateTouched(true);
       };
 
-    useEffect(() => {
-    // Assuming you want to set the first available time as the default when times update
-    if (props.availableTimes && props.availableTimes.length > 0) {
-        formik.setFieldValue('restime', props.availableTimes[0], true);
-    }
-    }, [props.availableTimes]);
-
     const formik = useFormik({
         initialValues: {
           resdate: "",
@@ -74,10 +67,16 @@ function BookingForm(props){
       });
 
       useEffect(() => {
+        // Assuming you want to set the first available time as the default when times update
+        if (props.availableTimes && props.availableTimes.length > 0) {
+            formik.setFieldValue('restime', props.availableTimes[0], true);
+        }
+        }, [props.availableTimes, formik]);
+      useEffect(() => {
         if (isDateTouched && !formik.values.resdate) {
           formik.setFieldError("resdate", "Required");
         }
-      }, [formik.values.resdate, isDateTouched]);
+      }, [formik.values.resdate, isDateTouched, formik]);
 
     return(
         <>
