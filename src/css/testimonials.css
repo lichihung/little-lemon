@@ -193,7 +193,6 @@
     .navigator {
       position: absolute;
       top: 50%;
-      transform: translatey(-50%);
       width: 100%;
       z-index: 100;
       padding: 0 30px;
