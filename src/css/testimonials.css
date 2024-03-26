@@ -74,12 +74,11 @@
       margin-left:-20px;
       margin-right:-20px;
       padding-top:55px;
-      min-height: 62vh;
+      height: 580px;
     }
     .testimonials-title{
       font-size: 48px;
     }
-
     .testimonials-box{
       display:none;
     }
@@ -111,7 +110,7 @@
     ul.slides {
       position: relative;
       width: 100%;
-      height: 55vh;
+      height: 450px;
       list-style: none;
       margin: 0;
       padding: 0;
@@ -153,7 +152,7 @@
     .controls-visible {
       position: absolute;
       width: 100%;
-      bottom: 0px;
+      bottom: 0;
       text-align: center;
     }
     .controls-visible label {
