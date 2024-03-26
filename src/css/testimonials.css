@@ -75,20 +75,25 @@
       margin-right:-20px;
       padding-top:55px;
       height: 580px;
+      border:1px solid black;
     }
     .testimonials-title{
       font-size: 48px;
+      border:1px solid red;
     }
     .testimonials-box{
       display:none;
+      border:1px solid blue;
     }
     .testimonials-box-mobile{
       display:block;
       width:240px;
+      border:1px solid green;
     }
     .testimonials-content{
       height: 340px;
       background-color:white;
+      border:1px solid orange;
     }
     .testimonials-content .rating{
       margin: 40px auto 0px auto;
@@ -106,6 +111,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      /* border:2px solid pink; */
     }
     ul.slides {
       position: relative;
@@ -115,6 +121,7 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
+      /* border:2px solid purple; */
     }
     li.slide {
       margin: 0;
@@ -128,6 +135,7 @@
       justify-content: center;
       align-items: center;
       transition: .5s transform ease-in-out;
+      border:2px dashed gray;
     }
     .slide:nth-of-type(1) {
       background-color: #EBDABB;
