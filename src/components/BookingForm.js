@@ -1,4 +1,4 @@
-import {useState, React, useEffect} from "react";
+import {useState, React} from "react";
 import { useFormik } from "formik";
 import {
   Box,
@@ -66,17 +66,19 @@ function BookingForm(props){
         }),
       });
 
-      useEffect(() => {
-        // Assuming you want to set the first available time as the default when times update
-        if (props.availableTimes && props.availableTimes.length > 0) {
-            formik.setFieldValue('restime', props.availableTimes[0], true);
-        }
-        }, [props.availableTimes, formik]);
-      useEffect(() => {
-        if (isDateTouched && !formik.values.resdate) {
-          formik.setFieldError("resdate", "Required");
-        }
-      }, [formik.values.resdate, isDateTouched, formik]);
+    //   useEffect(() => {
+    //     // Assuming you want to set the first available time as the default when times update
+    //     if (props.availableTimes && props.availableTimes.length > 0) {
+    //         formik.setFieldValue('restime', props.availableTimes[0], true);
+    //     }
+    //     }, [props.availableTimes, formik]);
+    //   useEffect(() => {
+    //     if (isDateTouched && !formik.values.resdate) {
+    //       formik.setFieldError("resdate", "Required");
+    //     } else {
+    //         formik.setFieldError("resdate", ""); // Clear error if date is touched and not empty
+    //     }
+    //   }, [formik.values.resdate, isDateTouched]);
 
     return(
         <>
